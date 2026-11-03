@@ -291,3 +291,13 @@ The backend API has been manually tested using Postman.
 Swagger UI can also be used to explore and test the available API endpoints.
 
 The frontend has been tested locally by verifying the main user flows, including authentication and navigation.
+
+### AI-Assisted Development
+
+AI tools were used as development assistants throughout the project for:
+
+- Exploring implementation approaches and architectural decisions.
+- Troubleshooting and debugging.
+- Reviewing code and improving documentation.
+
+All suggested solutions were reviewed, tested, and integrated into the project with a focus on understanding the implementation and its behavior.
