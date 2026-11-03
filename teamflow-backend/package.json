@@ -1,0 +1,48 @@
+{
+  "name": "teamflow-backend",
+  "version": "1.0.0",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "express",
+    "typeorm",
+    "mysql",
+    "jwt",
+    "rest-api",
+    "backend"
+  ],
+  "author": "Anatoly Zelikov",
+  "license": "ISC",
+  "description": "Backend REST API for TeamFlow.",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.17.2",
+    "reflect-metadata": "^0.2.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "typeorm": "^0.3.28"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^2.0.0",
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^25.3.0",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
+    "typescript": "^5.9.3"
+  }
+}
