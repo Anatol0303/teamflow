@@ -4,6 +4,17 @@ TeamFlow is a full-stack web application for managing teams, team members, roles
 
 The project consists of a React + TypeScript frontend and a Node.js + TypeScript backend with a REST API.
 
+## Production Deployment
+
+TeamFlow is deployed and available online.
+
+- **Frontend:** https://vivacious-passion-production-6744.up.railway.app
+- **Backend API:** https://teamflow-production-b1ad.up.railway.app
+- **API Documentation (Swagger):** https://teamflow-production-b1ad.up.railway.app/api-docs
+
+The frontend and backend are hosted on Railway.
+The production MySQL database is hosted on Aiven.
+
 ## Project Structure
 
 ```text
@@ -22,12 +33,11 @@ teamflow/
 │   │   │   └── user/
 │   │   │       └── dto/
 │   │   ├── shared/
-│   │   │   ├── errors/
-│   │   │   └── types/
+│   │   │   └── errors/
+│   │   ├── types/
 │   │   ├── app.ts
 │   │   └── server.ts
 │   ├── .env.example
-│   ├── .gitignore
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── Teamflow API.postman_collection.json
@@ -45,7 +55,7 @@ teamflow/
     │   ├── App.tsx
     │   ├── index.css
     │   └── main.tsx
-    ├── .gitignore
+    ├── .env.example
     ├── eslint.config.js
     ├── index.html
     ├── package.json
@@ -118,13 +128,16 @@ npm install
 ```
 ## Environment Variables
 
-The backend requires environment variables for the server, database connection, and JWT authentication.
+The application uses environment variables to configure the backend server, database connection, frontend API URL, and JWT authentication.
+
+### Backend
 
 Create a `.env` file in the `teamflow-backend` directory:
 
 ```env
 PORT=3000
 NODE_ENV=development
+FRONTEND_URL=http://localhost:5173
 
 DB_HOST=localhost
 DB_PORT=3306
@@ -136,9 +149,28 @@ JWT_SECRET=your_secret
 JWT_EXPIRES_IN=your_expiration
 ```
 
-Do not commit the `.env` file to the repository.
+### Frontend
+
+Create a `.env` file in the `teamflow-frontend` directory:
+
+```env
+VITE_API_URL=http://localhost:3000
+```
+### Production Environment
+
+In production, environment variables are configured directly in Railway.
+
+The backend uses the production MySQL database hosted on Aiven.
+
+Production environment variables include the database connection settings, JWT_SECRET, NODE_ENV, and FRONTEND_URL.
+
+The frontend uses VITE_API_URL to connect to the deployed backend API.
+
+Do not commit .env files or sensitive credentials to the repository.
 
 ## Database Setup
+
+### Local Database
 
 Create a MySQL database named `teamflow`:
 
@@ -146,9 +178,15 @@ Create a MySQL database named `teamflow`:
 CREATE DATABASE teamflow;
 ```
 
-Make sure the database credentials in `teamflow-backend/.env` match your MySQL configuration.
+Make sure the database credentials in `teamflow-backend/.env` match your local MySQL configuration.
 
-## Run the Project
+### Production Database
+
+The production MySQL database is hosted on Aiven.
+
+The database schema is synchronized automatically by TypeORM when the backend starts.
+
+## Run the Project Locally
 
 ### Start the backend
 
@@ -184,13 +222,22 @@ Open the frontend URL in your browser to use TeamFlow.
 
 The backend API is documented with Swagger.
 
+### Local Environment
+
 After starting the backend server, Swagger UI is available at:
 
 ```text
 http://localhost:3000/api-docs
 ```
+### Production Environment
 
-Open the URL in your browser to view and test the available API endpoints.
+The deployed API documentation is available at:
+
+```text
+https://teamflow-production-b1ad.up.railway.app/api-docs
+```
+
+Open either URL in your browser to view and test the available API endpoints.
 
 ## API Endpoints
 
@@ -272,6 +319,7 @@ The backend follows a modular architecture.
 - `infrastructure/database` — database configuration and connection.
 - `infrastructure/swagger` — Swagger configuration and API documentation.
 - `shared/errors` — custom application errors and HTTP error classes.
+- `types` — custom TypeScript type declarations.
 - `config` — application configuration.
 
 ### Frontend
@@ -291,6 +339,8 @@ The backend API has been manually tested using Postman.
 Swagger UI can also be used to explore and test the available API endpoints.
 
 The frontend has been tested locally by verifying the main user flows, including authentication and navigation.
+
+The production deployment has been verified: the frontend is accessible online, and the backend successfully connects to the production MySQL database hosted on Aiven.
 
 ### AI-Assisted Development
 
