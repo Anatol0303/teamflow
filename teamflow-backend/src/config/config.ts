@@ -6,6 +6,10 @@ export const config = {
         nodeEnv: process.env.NODE_ENV || 'development',
     },
 
+    cors: {
+        origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    },
+
     jwt: {
         secret: process.env.JWT_SECRET as string,
         expiresIn: (process.env.JWT_EXPIRES_IN || '1h') as SignOptions['expiresIn'],
@@ -23,4 +27,8 @@ export const config = {
 // 🔥 Проверка обязательных переменных
 if (!config.jwt.secret) {
     throw new Error('JWT_SECRET is not defined');
+}
+
+if (!config.db.host || !config.db.username || !config.db.database) {
+    throw new Error('Database configuration is incomplete');
 }

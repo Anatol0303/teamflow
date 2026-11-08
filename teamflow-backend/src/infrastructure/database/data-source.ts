@@ -1,3 +1,5 @@
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { User } from '../../entities/User';
@@ -11,6 +13,12 @@ export const AppDataSource = new DataSource({
     username: config.db.username,
     password: config.db.password,
     database: config.db.database,
+
+    ssl: config.app.nodeEnv === 'production'
+        ? {
+            ca: readFileSync(resolve(process.cwd(), 'ca.pem'), 'utf8'),
+        }
+        : undefined,
 
     synchronize: true,
     logging: false,

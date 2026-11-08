@@ -15,7 +15,7 @@ import { AppDataSource } from './infrastructure/database/data-source';
 const app = express();
 app.use(
     cors({
-        origin: 'http://localhost:5173',
+        origin: config.cors.origin,
     })
 );
 app.use(express.json());
