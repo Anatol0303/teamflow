@@ -69,7 +69,7 @@ function RegisterUserPage() {
             <div className="col-md-6">
                 <h2 className="mb-4">Register</h2>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} autoComplete="off">
                     <div className="mb-3">
                         <label className="form-label">
                             Email
@@ -78,6 +78,7 @@ function RegisterUserPage() {
                         <input
                             type="email"
                             className="form-control"
+                            autoComplete="off"
                             value={email}
                             onChange={(e) =>
                                 setEmail(e.target.value)
@@ -93,6 +94,7 @@ function RegisterUserPage() {
                         <input
                             type="password"
                             className="form-control"
+                            autoComplete="new-password"
                             value={password}
                             onChange={(e) =>
                                 setPassword(e.target.value)
